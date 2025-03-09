@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbot>
+    <trade>
+        <market>Synthetic Indices</market>
+        <trade_type>Rise/Fall</trade_type>
+        <stake>2</stake>
+        <stop_loss>3</stop_loss>
+        <take_profit>50</take_profit>
+        <trading_schedule>24/7</trading_schedule>
+    </trade>
+    <strategy>
+        <indicators>
+            <moving_average period="10" type="SMA" source="close" />
+            <rsi period="14" source="close" overbought="70" oversold="30" />
+        </indicators>
+        <entry_conditions>
+            <condition>
+                <if>
+                    <rsi below="30" />
+                    <moving_average cross_above="price" />
+                </if>
+                <then>BUY</then>
+            </condition>
+            <condition>
+                <if>
+                    <rsi above="70" />
+                    <moving_average cross_below="price" />
+                </if>
+                <then>SELL</then>
+            </condition>
+        </entry_conditions>
+    </strategy>
+</dbot>
